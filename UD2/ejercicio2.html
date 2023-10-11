@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    p{
+        width: 50%;
+        height: 50px;
+        border: 2px solid black;
+        text-align: center;
+    }
+</style>
+<body>
+    <p class="parrafo">p1</p>
+    <p class="parrafo">p2</p>
+    <p class="parrafo">p3</p>
+    <p class="parrafo">p4</p>
+    <p class="parrafo">p5</p>
+    <p class="parrafo">p6</p>
+    <p class="parrafo">p7</p>
+    <p class="parrafo">p8</p>
+    <p class="parrafo">p9</p>
+    <p class="parrafo">p10</p>
+    <button id="reaparecer">Reparecer</button>
+  <script>
+   let parrafos = document.getElementsByTagName("p");
+   let lista = Array.from(parrafos);
+   let boton = document.getElementById("reaparecer")
+
+   for(let i=0; i<=lista.length; i++){
+    lista[i].addEventListener('click', ()=> { lista[i].style.visibility="hidden" });
+    lista[i].addEventListener('contextmenu', (event) => { event.preventDefault(); lista[i].remove(); });
+    boton.addEventListener('click', () => { lista[i].style.visibility="visible"});
+   }
+   
+  </script>
+
+
+</body>
+</html>
