@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+   .campo-error{
+    display: none;
+   }
+    .invalido input{
+        border: 5px solid red;
+    }
+    .invalido .campo-error{
+        display: block;
+    }
+  
+</style>
+<body>
+    <form id ="f1" name="form1" action="prueba.html" method="post">
+     <label for="correo">Introduzca Email:  
+     <input type="text" id="correo">
+    <div class="campo-error">El campo no sigue el formato adecuado</div>
+ </label>
+     <button type="submit">Enviar</button>
+    </form>
+    <script>
+     let input = document.getElementById('correo');
+
+   function validarRequerido(event) {
+   let listaServidores=["terra.es", "myspace.com", "arrakis.es", "tuenti.es"]
+   const emailRegex = /^[a-z]+@[a-z]/;
+   const t = event.target
+   let email = t.value;
+   let correoValido = emailRegex.test(email);
+   let divisor = "@"
+   const indice = email.indexOf(divisor)
+   let subcadena = ""
+
+   if(indice !== -1) {
+     subcadena = email.substring(indice+divisor.length)
+   }
+   
+   function verificarServidor(listaServidores, subcadena){
+   for(servidor of listaServidores) {
+     if(servidor === subcadena) {
+     console.log(servidor)
+     }else{
+       console.log("fallo")
+     }
+   }
+}
+
+       /*   if(!correoValido && verificarServidor(listaServidores, subcadena)) {
+           t.parentElement.classList.add('invalido')
+          
+        }else {
+            t.parentElement.classList.remove('invalido')
+        } 
+        */
+    
+      verificarServidor(listaServidores, subcadena)
+    } 
+ 
+  input.oninput = validarRequerido
+ 
+
+    </script>
+</body>
+</html>

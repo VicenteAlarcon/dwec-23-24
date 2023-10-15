@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+  .invalido{
+    border: 5px solid slateblue;
+  }
+
+</style>
+<body>
+    <form action="ejercicio2.html" method="post" name="formulario" id="formu">
+     <div class="campo_correo">
+     <label for="email">Introduce un email: </label>
+     <input type="text" name="correo" id="mail">
+     </div>
+     <button id="boton" type="submit">Enviar</button>
+</form>
+<script>
+
+let entrada = document.getElementById('mail')
+
+    function validarCorreo(event) { 
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(event.target.value);
+  }
+
+  
+  function validarRequerido(event) { 
+
+    if (!validarCorreo(event)){
+     event.target.classList.add('invalido')
+     event.preventDefault(); 
+    }else{
+       event.target.classList.remove('invalido')
+       
+    }
+     
+  }
+
+   function validarServidor(event) {
+   
+    const listaServidores=["terra.es", "myspace.com", "arrakis.es", "tuenti.es"]
+    let cadena = event.target.value
+    let encontrado = false
+        const caracterCorte = "@"
+        const partes = cadena.split(caracterCorte)
+
+    for(let i=0; i<=listaServidores.length; i++) {
+        if(listaServidores[i] === partes[1]){
+        encontrado = true;
+        }
+      }if(!encontrado){
+        alert("El servidor no es correcto")
+      }
+     
+   }
+
+
+entrada.oninput = validarRequerido
+
+ 
+
+
+  
+
+  
+
+
+
+</script>
+</body>
+</html>
